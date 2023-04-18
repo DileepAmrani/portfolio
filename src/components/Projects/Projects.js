@@ -1,5 +1,5 @@
 import React from "react";
-
+import ReadMoreReact from 'read-more-react';
 import {
   BlogCard,
   CardInfo,
@@ -33,9 +33,15 @@ const Projects = () => (
             <HeaderThree title>{title}</HeaderThree>
             <Hr />
           </TitleContent>
-          <CardInfo>{description}</CardInfo>
+          <CardInfo>
+            <ReadMoreReact text={description}
+              min={50}
+              ideal={70}
+              max={200}
+              readMoreText="read more" />
+          </CardInfo>
           <div>
-            <TitleContent>Stack</TitleContent>
+            {/* <TitleContent>Stack</TitleContent> */}
             <TagList>
               {tags.map((tag, i) => {
                 return <Tag key={i}>{tag}</Tag>
@@ -43,8 +49,11 @@ const Projects = () => (
             </TagList>
           </div>
           <UtilityList>
-            <ExternalLinks href={visit}>Code</ExternalLinks>
-            <ExternalLinks href={source}>Source</ExternalLinks>
+            <ExternalLinks href={visit}>Visit</ExternalLinks>
+            {
+              source !== "" &&
+              <ExternalLinks href={source}>Source</ExternalLinks>
+            }
           </UtilityList>
         </BlogCard>
       })}{" "}
